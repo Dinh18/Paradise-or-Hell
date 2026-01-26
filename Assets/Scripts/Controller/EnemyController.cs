@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private EnemyMovement enemyMovement;
     private EnemyAttack enemyAttack;
+    private EnemyHealth enemyHealth;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,9 +14,11 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
         enemyMovement = GetComponent<EnemyMovement>();
         enemyAttack = GetComponent<EnemyAttack>();
+        enemyHealth = GetComponent<EnemyHealth>();
 
         enemyMovement.Setup();
         enemyAttack.Setup();
+        enemyHealth.Setup(animator);
     }
 
     // Update is called once per frame
