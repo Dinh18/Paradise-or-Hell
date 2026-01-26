@@ -5,6 +5,7 @@ public class EnemyHealth : MonoBehaviour, ITakeDamage
     [Header("Health Settings")]
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth = 100;
+    [SerializeField] private GameObject expGemPrefab;
     private Animator animator;
 
     public void Setup(Animator animator)
@@ -16,16 +17,15 @@ public class EnemyHealth : MonoBehaviour, ITakeDamage
     {
         currentHealth -= damage;
         animator.SetTrigger("Hurt");
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Die()
     {
-        
+        expGemPrefab = Instantiate(expGemPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
