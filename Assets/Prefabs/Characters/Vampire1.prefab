@@ -204,8 +204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   minDistanceToPlayer: 0.5
-  separationRadius: 0.5
-  separationForce: 1
+  separationRadius: 0.1
+  separationForce: 0.2
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128

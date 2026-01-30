@@ -5,13 +5,13 @@ public class PlayerSkills : MonoBehaviour
 {
     private List<ISkill> skills;
     private int currTime = 0;
-    public void Setup()
+    public void Setup(PlayerStats playerStats, PlayerHealth playerHealth)
     {
         skills = new List<ISkill>();
         ISkill[] skillArray = GetComponentsInChildren<ISkill>();
         for(int i = 0; i < skillArray.Length; i++)
         {
-            skillArray[i].Setup();
+            skillArray[i].Setup(playerStats, playerHealth);
             skills.Add(skillArray[i]);
         }
     }

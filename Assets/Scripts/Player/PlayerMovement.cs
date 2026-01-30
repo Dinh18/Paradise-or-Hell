@@ -3,20 +3,22 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement instant;
-    [SerializeField] private float moveSpeed = 5f;
+    // [SerializeField] private float moveSpeed = 5f;
     private Rigidbody2D rb;
     [SerializeField] private Vector2 movement;
     [SerializeField] private Joystick joystick;
+    private PlayerStats playerStats;
     private Animator animator;
     private int animID_InputX;
     private int animID_InputY;
     private int animID_Speed;
     private int animID_IsHurt;
 
-    public void Setup(Rigidbody2D rb, Animator animator)
+    public void Setup(Rigidbody2D rb, Animator animator, PlayerStats playerStats)
     {
         this.rb = rb;
         this.animator = animator;
+        this.playerStats = playerStats;
         instant = this;
 
         animID_InputX = Animator.StringToHash("InputX");
@@ -60,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     public void ApplyMovement()
     {
         // Di chuyển vật lý
-        if(rb !=null ) rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if(rb !=null ) rb.MovePosition(rb.position + movement * playerStats.GetSpeed() * Time.fixedDeltaTime);
     }
 
     public Vector3 playerPosition()

@@ -6,12 +6,12 @@ public class Whip : ISkill
     private SkillHitBox[] skillHitBoxes;
     private float currTime = 0;
 
-    public override void Setup()
+    public override void Setup(PlayerStats playerStats, PlayerHealth playerHealth)
     {
         skillHitBoxes = GetComponentsInChildren<SkillHitBox>();
         for(int i = 0; i < skillHitBoxes.Length; i++)
         {
-            skillHitBoxes[i].SetUp(this);
+            skillHitBoxes[i].SetUp(this, playerHealth, playerStats);
         }
     }
 

@@ -4,9 +4,14 @@ public class SkillHitBox : MonoBehaviour
 {
     private GameObject hitbox;
     private ISkill skill;
-    public void SetUp(ISkill skill)
+    private PlayerHealth playerHealth;
+    private PlayerStats playerStats;
+
+    public void SetUp(ISkill skill, PlayerHealth playerHealth, PlayerStats playerStats)
     {
         this.skill = skill;
+        this.playerHealth = playerHealth;
+        this.playerStats = playerStats;
         this.hitbox = this.gameObject;
         DeactiveHitBox();
     }
@@ -19,6 +24,7 @@ public class SkillHitBox : MonoBehaviour
             if(enemyHealth != null) 
             {
                 enemyHealth.TakeDamage(skill.GetDamage());
+                playerHealth.RecoverHealth((int)(skill.GetDamage() * playerStats.GetRecoverHealth()));
             }
         }
     }

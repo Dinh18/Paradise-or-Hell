@@ -15,6 +15,6 @@ public abstract class ISkill : MonoBehaviour
         return coolDown;
     }
 
-    public abstract void Setup();
+    public abstract void Setup(PlayerStats playerStats, PlayerHealth playerHealth);
     public abstract void Attack();
 }
