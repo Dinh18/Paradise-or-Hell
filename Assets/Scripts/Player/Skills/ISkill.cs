@@ -7,6 +7,8 @@ public abstract class ISkill : MonoBehaviour
     [SerializeField] protected string skillName = "Weapon";
     [SerializeField] protected int damage = 10;
     [SerializeField] protected float coolDown = 1f;
+    [SerializeField] protected int amount = 1;
+    [SerializeField] protected int maxAmount = 5;
     public int GetDamage()
     {
         return damage;
@@ -33,6 +35,18 @@ public abstract class ISkill : MonoBehaviour
         if(coolDown < 0.1f)
         {
             coolDown = 0.1f;
+        }
+    }
+
+    public void UpgradeAmount()
+    {
+        if(amount >= maxAmount)
+        {
+            damage += (int) damage/maxAmount;
+        }
+        else
+        {
+            amount+=1;
         }
     }
 }

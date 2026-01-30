@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb6fe0ea41302941aca29a23ef8398f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillType: 0
 --- !u!1 &525955872164304758
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb6fe0ea41302941aca29a23ef8398f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillType: 0
 --- !u!1 &1874099859472851720
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1249edc0630574289626d6463b4962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: Weapon
   damage: 10
   coolDown: 2
-  numberOfWhips: 2
+  amount: 1
+  maxAmount: 2

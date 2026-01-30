@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4624b36b994098449ab35178daa8eb58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: Fire
   damage: 10
   coolDown: 3
+  amount: 1
+  maxAmount: 5
   firePrefab: {fileID: 3445539803424945695, guid: 2a6c80ab36f78484d82ec0b8c2114eda, type: 3}
   fireForce: 5
-  numberOfFires: 4

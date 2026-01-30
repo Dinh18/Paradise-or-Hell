@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeName: Fire
   description: Fires 1 more projectile.
   upgradeType: 1
-  statName: 0
+  statName: 6
   amount: 1
   statSkillType: 2
-  weaponPrefab: {fileID: 0}
+  skillPrefab: {fileID: 6760625910616717084, guid: 794039607e395b04fa3487e82c9a41ad, type: 3}

@@ -100,10 +100,15 @@ public class UpgradeController : MonoBehaviour
             PlayerStats.instance.IncreaseStat(data.GetStat(), data.GetAmount());
             Debug.Log(data.GetStat() );
         }
-        else if (data.GetUpgradeType() == UpgradeType.StatWeaponUpgrade)
+        else if (data.GetUpgradeType() == UpgradeType.StatSkillUpgrade)
         {
             PlayerSkills.instant.UpgradeStat(data.GetUpgradeName(), data.GetStatSkillType(), data.GetAmount());
             Debug.Log(data.GetUpgradeName() + " " + data.GetStatSkillType().ToString());
+        }
+        else if(data.GetUpgradeType() == UpgradeType.NewSkill)
+        {
+            PlayerSkills.instant.AddSkill(data.GetUpgradeName(), data.GetSkillPrefab());
+            Debug.Log("Thêm kỹ năng mới: " + data.GetUpgradeName());
         }
     }
 

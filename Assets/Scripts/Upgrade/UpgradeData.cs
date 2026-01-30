@@ -2,8 +2,8 @@ using UnityEngine;
 public enum UpgradeType
 {
     StatUpgrade,
-    NewWeapon,
-    StatWeaponUpgrade,
+    NewSkill,
+    StatSkillUpgrade,
     None 
 }
 public enum StatType
@@ -36,7 +36,7 @@ public class UpgradeData : ScriptableObject
     [SerializeField] private float amount;
     [Header("Upgrade Skill")] 
     [SerializeField] private StatSkillType statSkillType;
-    [SerializeField] private GameObject weaponPrefab;
+    [SerializeField] private GameObject skillPrefab;
 
     public string GetUpgradeName() => upgradeName;
     public string GetDescription() => description;
@@ -44,6 +44,6 @@ public class UpgradeData : ScriptableObject
     public StatType GetStat() => statName;
     public StatSkillType GetStatSkillType() => statSkillType;
     public float GetAmount() => amount;
-    public GameObject GetWeaponPrefab() => weaponPrefab;
+    public GameObject GetSkillPrefab() => skillPrefab;
 
 }

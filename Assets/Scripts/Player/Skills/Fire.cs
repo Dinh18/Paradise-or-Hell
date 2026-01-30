@@ -7,7 +7,7 @@ public class Fire : ISkill
     [Header("Fire Skill Specific")]
     [SerializeField] private GameObject firePrefab;
     [SerializeField] private float fireForce = 2f;
-    [SerializeField] private int numberOfFires = 1;
+    // [SerializeField] private int numberOfFires = 1;
     private PlayerStats playerStats;
     private PlayerHealth playerHealth;
 
@@ -17,10 +17,9 @@ public class Fire : ISkill
         currTime += Time.deltaTime;
         if(currTime >= coolDown)
         { 
-            for(int i = 0; i < numberOfFires; i++)
+            for(int i = 0; i < amount; i++)
             {
                 StartCoroutine(SpawnFireAfterDelay(0.1f + (i * 0.1f), i));
-                
             }
             currTime = 0;
         }

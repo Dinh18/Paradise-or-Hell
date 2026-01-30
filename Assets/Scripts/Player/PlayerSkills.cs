@@ -28,15 +28,9 @@ public class PlayerSkills : MonoBehaviour
 
     public void UpgradeStat(string skillName, StatSkillType statSkillType, float amount)
     {
-        ISkill skillToUpgrade = null;
-        for(int i = 0; i < skills.Count; i++)
-        {
-            if(skills[i].GetSkillName() == skillName)
-            {
-                skillToUpgrade = skills[i];
-                break;
-            }
-        }
+        ISkill skillToUpgrade = GetSkill(skillName);
+
+        if(skillToUpgrade == null) return;
 
         switch(statSkillType)
         {
@@ -47,5 +41,37 @@ public class PlayerSkills : MonoBehaviour
                 skillToUpgrade.UpgradeDamage((int)amount);
                 break;
         }
+    }
+
+    public void AddSkill(string skillName, GameObject skillPrefab)
+    {
+        ISkill skillToUpgrade = GetSkill(skillName);
+        if(skillToUpgrade == null)
+        {
+            GameObject skillObj = GameObject.Instantiate(skillPrefab, this.transform);
+            ISkill newSkill = skillObj.GetComponent<ISkill>();
+            newSkill.Setup(
+                GetComponent<PlayerStats>(),
+                GetComponent<PlayerHealth>()
+            );
+            skills.Add(newSkill);
+        }
+        else
+        {
+            skillToUpgrade.UpgradeAmount();
+        }
+
+    }
+
+    public ISkill GetSkill(string skillName)
+    {
+        for(int i = 0; i < skills.Count; i++)
+        {
+            if(skills[i].GetSkillName() == skillName)
+            {
+                return skills[i];
+            }
+        }
+        return null;
     }
 }
