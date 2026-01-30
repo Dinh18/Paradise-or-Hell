@@ -70,4 +70,9 @@ public class PlayerMovement : MonoBehaviour
         return this.gameObject.transform.position;
     }
 
+    public Vector2 GetMovement()
+    {
+        return movement;
+    }
+
 }

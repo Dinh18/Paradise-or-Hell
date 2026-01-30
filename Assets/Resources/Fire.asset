@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fe8aff0dbba38849afcb297487c9e69, type: 3}
-  m_Name: whip
+  m_Name: Fire
   m_EditorClassIdentifier: 
-  upgradeName: Whip
+  upgradeName: Fire
   description: Fires 1 more projectile.
   upgradeType: 1
-  statName: 6
+  statName: 0
   amount: 1
-  statSkillType: 0
+  statSkillType: 2
   weaponPrefab: {fileID: 0}

@@ -68,7 +68,7 @@ public class UpgradeController : MonoBehaviour
             btn.onClick.AddListener(() => 
             {
                 // Debug ngay tại thời điểm click để bắt quả tang lỗi
-                Debug.Log($"CLICKED: Tên hiển thị là [{data.GetUpgradeName()}] - Nhưng Enum thật là [{data.GetStat()}]");
+                // Debug.Log($"CLICKED: Tên hiển thị là [{data.GetUpgradeName()}] - Nhưng Enum thật là [{data.GetStat()}]");
                 SelectUpgrade(data);
             });
 
@@ -86,7 +86,7 @@ public class UpgradeController : MonoBehaviour
     {
         ApplyUpgrade(data);
 
-        Debug.Log("Đã chọn nâng cấp: " + data.GetStat().ToString());
+        // Debug.Log("Đã chọn nâng cấp: " + data.GetStat().ToString());
 
         upgradePanel.SetActive(false);
         Time.timeScale = 1f;
@@ -98,11 +98,12 @@ public class UpgradeController : MonoBehaviour
         if (data.GetUpgradeType() == UpgradeType.StatUpgrade)
         {
             PlayerStats.instance.IncreaseStat(data.GetStat(), data.GetAmount());
-            // Debug.Log("Đã nâng cấp: " + data.GetStat() + " +" + data.GetAmount());
+            Debug.Log(data.GetStat() );
         }
-        else if (data.GetUpgradeType() == UpgradeType.NewWeapon)
+        else if (data.GetUpgradeType() == UpgradeType.StatWeaponUpgrade)
         {
-            Debug.Log("Đã nhận vũ khí: " + data.GetStat());
+            PlayerSkills.instant.UpgradeStat(data.GetUpgradeName(), data.GetStatSkillType(), data.GetAmount());
+            Debug.Log(data.GetUpgradeName() + " " + data.GetStatSkillType().ToString());
         }
     }
 
@@ -117,7 +118,7 @@ public class UpgradeController : MonoBehaviour
 
             int randomIndex = Random.Range(0, tempList.Count);
             result.Add(tempList[randomIndex]);
-            Debug.Log("Chon ngau nhien: " + tempList[randomIndex].GetUpgradeName());
+            // Debug.Log("Chon ngau nhien: " + tempList[randomIndex].GetUpgradeName());
             tempList.RemoveAt(randomIndex);
         }
         return result;

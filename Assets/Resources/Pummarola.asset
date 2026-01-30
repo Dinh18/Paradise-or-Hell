@@ -17,4 +17,5 @@ MonoBehaviour:
   upgradeType: 0
   statName: 5
   amount: 0.2
+  statSkillType: 2
   weaponPrefab: {fileID: 0}

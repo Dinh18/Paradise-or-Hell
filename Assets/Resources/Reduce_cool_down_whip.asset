@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Reduce_cool_down_whip
   m_EditorClassIdentifier: 
   upgradeName: Whip
-  description: Count down whip 0.2s
-  upgradeType: 0
-  statName: Whip
-  amount: 0.2
+  description: Count down whip 2%
+  upgradeType: 2
+  statName: 6
+  amount: 0.02
+  statSkillType: 1
   weaponPrefab: {fileID: 0}
