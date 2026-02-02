@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 3249960107184811575}
   - component: {fileID: 6791165197095028994}
   m_Layer: 0
-  m_Name: Vampire 3
+  m_Name: Vampire3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,7 +213,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 77a448cf5b111a44ab4ed0373e30fd1c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -329,6 +329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41619705dc7bac24ba20ccd6be68c5e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 50
+  currentHealth: 50
   expGemPrefab: {fileID: 4885098983432009016, guid: 8c311b6edb4419d449690c7e9bf27233, type: 3}

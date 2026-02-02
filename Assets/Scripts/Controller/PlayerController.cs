@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instant;
     private PlayerMovement playerMovement;
     private PlayerHealth playerHealth;
     private PlayerSkills playerSkills;
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStats playerStats;
     void Awake()
     {
+        instant = this;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,5 +46,10 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         playerMovement.ApplyMovement();
+    }
+
+    public Vector2 PlayerPosition()
+    {
+        return transform.position;
     }
 }

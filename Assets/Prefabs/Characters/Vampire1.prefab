@@ -248,8 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41619705dc7bac24ba20ccd6be68c5e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 10
+  currentHealth: 10
   expGemPrefab: {fileID: 174685179435498223, guid: f64ba6a99e131dd4497e05e7ce7e80b7, type: 3}
 --- !u!1 &3837546038733510892
 GameObject:

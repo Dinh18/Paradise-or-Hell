@@ -1,12 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
+    private int index = 0;
     private Rigidbody2D rb;
     private Animator animator;
     private EnemyMovement enemyMovement;
     private EnemyAttack enemyAttack;
     private EnemyHealth enemyHealth;
+    // void OnEnable()
+    // {
+    //     enemyHealth.ReSpawn();
+    // }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,5 +37,12 @@ public class EnemyController : MonoBehaviour
     {
         enemyMovement.ApplyMovement(rb);
     }
+
+    public void SetIndex(int index)
+    {
+        this.index = index;
+    }
+
+    public int GetIndex() => index;
 
 }

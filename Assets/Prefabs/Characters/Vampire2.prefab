@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 9083917982088717819}
   - component: {fileID: 2708685732946049874}
   m_Layer: 0
-  m_Name: Vampire 2
+  m_Name: Vampire2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -248,8 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41619705dc7bac24ba20ccd6be68c5e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 30
+  currentHealth: 30
   expGemPrefab: {fileID: 8191070217914480222, guid: 7dc1f4202a26d4d489a3759b1432b523, type: 3}
 --- !u!1 &5979157041755950527
 GameObject:
