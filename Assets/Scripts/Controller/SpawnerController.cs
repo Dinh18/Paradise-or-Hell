@@ -4,12 +4,14 @@ using UnityEngine;
 public class SpawnerController : MonoBehaviour
 {
     public static SpawnerController instant;
+    // Pooling Enemies
     [SerializeField] private List<GameObject> enemiesObjects;
-    private Dictionary<string, List<GameObject>> poolDictionary;
+    private Dictionary<string, List<GameObject>> enemiesPoolDictionary;
+    // Pooling Gems
+    [SerializeField] private List<GameObject> gemsObjects;
+    private Dictionary<string, List<GameObject>> gemsPoolDictionary;
     private float minRadius;
     private float maxRadius;
-    private int numberOfTypeEnemies = 1;
-    private float currTime;
     void Awake()
     {
         instant = this;
@@ -22,22 +24,22 @@ public class SpawnerController : MonoBehaviour
     void Start()
     {
         SetupSpawnArea();
-        InitializePool(50);
+        InitializeEnemiesPool(50);
         UpdateWave(1, 10);
     }
 
     // Update is called once per frame
     void Update()
     {
-        currTime += Time.deltaTime;
-        if(currTime >= 20)
-        {
-            Debug.Log("Space");
-            numberOfTypeEnemies++;
-            if(numberOfTypeEnemies > 3) numberOfTypeEnemies = 3;
-            UpdateWave(numberOfTypeEnemies, 20);
-            currTime = 0;
-        }
+        // currTime += Time.deltaTime;
+        // if(currTime >= 20)
+        // {
+        //     Debug.Log("Space");
+        //     numberOfTypeEnemies++;
+        //     if(numberOfTypeEnemies > 3) numberOfTypeEnemies = 3;
+        //     UpdateWave(numberOfTypeEnemies, 20);
+        //     currTime = 0;
+        // }
     }
 
     private void SetupSpawnArea()
@@ -47,21 +49,35 @@ public class SpawnerController : MonoBehaviour
         maxRadius = minRadius + 2;
     }
 
-    private void InitializePool(int amount)
+    private void InitializeEnemiesPool(int amount)
     {
-        poolDictionary = new Dictionary<string, List<GameObject>>();
+        enemiesPoolDictionary = new Dictionary<string, List<GameObject>>();
         for(int i = 0; i < enemiesObjects.Count; i++)
         {
             List<GameObject> objectPool = new List<GameObject>();
             for(int j = 0; j < amount; j++)
             {
                 GameObject obj = Instantiate(enemiesObjects[i], transform); 
-                EnemyController enemyController =  obj.GetComponent<EnemyController>();
-                if(enemyController != null) enemyController.SetIndex(j);
                 obj.SetActive(false);
                 objectPool.Add(obj);
             }
-            poolDictionary.Add(enemiesObjects[i].name, objectPool);
+            enemiesPoolDictionary.Add(enemiesObjects[i].name, objectPool);
+        }
+    }
+
+    private void InitializeGemsPool(int amount)
+    {
+        gemsPoolDictionary = new Dictionary<string, List<GameObject>>();
+        for(int i = 0; i < gemsObjects.Count; i++)
+        {
+            List<GameObject> objectsPool = new List<GameObject>();
+            for(int j = 0; j < amount; j++)
+            {
+                GameObject obj = GameObject.Instantiate(gemsObjects[i], transform);
+                obj.SetActive(false);
+                objectsPool.Add(obj);
+            }
+            gemsPoolDictionary.Add(gemsObjects[i].name,objectsPool);
         }
     }
 
@@ -87,7 +103,7 @@ public class SpawnerController : MonoBehaviour
             
             for(int j = 0; j < amount; j++)
             {
-                GameObject obj = poolDictionary[enemiesObjects[i].name][j];
+                GameObject obj = enemiesPoolDictionary[enemiesObjects[i].name][j];
                 if(!obj.activeSelf) SpawnEnemy(obj);
             }
         }

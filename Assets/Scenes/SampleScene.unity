@@ -5539,7 +5539,7 @@ GameObject:
   - component: {fileID: 1014254733}
   - component: {fileID: 1014254732}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5572,6 +5572,52 @@ Transform:
   m_Children:
   - {fileID: 616339827}
   - {fileID: 228462805}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1489319839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1489319841}
+  - component: {fileID: 1489319840}
+  m_Layer: 0
+  m_Name: TimeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1489319840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489319839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01275a56b98d96348a45f9494a8c5439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minute: 0
+  second: 0
+--- !u!4 &1489319841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489319839}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.098438, y: 11.848543, z: 916.6709}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1620113604
@@ -5607,6 +5653,11 @@ MonoBehaviour:
   - {fileID: 3618193769307924903, guid: 3568d077bd5bf7a40813307dcbafcda1, type: 3}
   - {fileID: 3754165797214257845, guid: b20077bfd6c5a9a4187394c832b32c7d, type: 3}
   - {fileID: 5505363486956836977, guid: ba0eb54b5fa67664c9dd2347935ce29d, type: 3}
+  gemsObjects:
+  - {fileID: 174685179435498223, guid: f64ba6a99e131dd4497e05e7ce7e80b7, type: 3}
+  - {fileID: 5673835659419934574, guid: c4621c567ffcf1a48b61642355fee24a, type: 3}
+  - {fileID: 8191070217914480222, guid: 7dc1f4202a26d4d489a3759b1432b523, type: 3}
+  - {fileID: 4885098983432009016, guid: 8c311b6edb4419d449690c7e9bf27233, type: 3}
 --- !u!4 &1620113606
 Transform:
   m_ObjectHideFlags: 0
@@ -5854,8 +5905,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.1}
-  m_Radius: 0.1
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.2
 --- !u!114 &2005267893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5952,7 +6003,8 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 427670252}
+  - {fileID: 1620113606}
+  - {fileID: 1489319841}
+  - {fileID: 1014254733}
   - {fileID: 1716674690}
   - {fileID: 786416608}
-  - {fileID: 1014254733}
-  - {fileID: 1620113606}

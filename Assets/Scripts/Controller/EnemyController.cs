@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
-    private int index = 0;
     private Rigidbody2D rb;
     private Animator animator;
     private EnemyMovement enemyMovement;
@@ -37,12 +36,4 @@ public class EnemyController : MonoBehaviour
     {
         enemyMovement.ApplyMovement(rb);
     }
-
-    public void SetIndex(int index)
-    {
-        this.index = index;
-    }
-
-    public int GetIndex() => index;
-
 }
