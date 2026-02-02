@@ -5649,6 +5649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e7d99e40fa47e45bc61c4ff4ba8d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objPerFrame: 5
   enemiesObjects:
   - {fileID: 3618193769307924903, guid: 3568d077bd5bf7a40813307dcbafcda1, type: 3}
   - {fileID: 3754165797214257845, guid: b20077bfd6c5a9a4187394c832b32c7d, type: 3}

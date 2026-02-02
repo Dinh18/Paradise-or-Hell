@@ -34,9 +34,11 @@ public class EnemyHealth : MonoBehaviour, ITakeDamage
 
     private void Die()
     {
-        GameObject gemObj = Instantiate(expGemPrefab, transform.position, Quaternion.identity);
-        currentHealth = maxHealth;
+        // GameObject gemObj = Instantiate(expGemPrefab, transform.position, Quaternion.identity);
+        // currentHealth = maxHealth;
         // this.gameObject.SetActive(false);
         OnEnemyKilled?.Invoke(this.gameObject);
     }
+
+    public GameObject GetExpGemPrefab() => expGemPrefab;
 }

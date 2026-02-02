@@ -9,7 +9,7 @@ public class ExperienceGem : IItem
         if(playerExperience != null)
         {
             playerExperience.AddExperience(amount); 
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }

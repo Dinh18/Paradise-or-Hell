@@ -1,9 +1,12 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
 {
     public static SpawnerController instant;
+    [Header("Pool Setting")]
+    [SerializeField] private int objPerFrame = 5; 
     // Pooling Enemies
     [SerializeField] private List<GameObject> enemiesObjects;
     private Dictionary<string, List<GameObject>> enemiesPoolDictionary;
@@ -18,28 +21,33 @@ public class SpawnerController : MonoBehaviour
     }
     void OnEnable()
     {
+        // EnemyHealth.OnEnemyKilled += SpawnGem;
         EnemyHealth.OnEnemyKilled += SpawnEnemy;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    IEnumerator Start()
     {
         SetupSpawnArea();
-        InitializeEnemiesPool(50);
+        // InitializeEnemiesPool(50);
+        // InitializeGemsPool(50);
+        yield return StartCoroutine(InitializeAllPool());
+        
         UpdateWave(1, 10);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // currTime += Time.deltaTime;
-        // if(currTime >= 20)
-        // {
-        //     Debug.Log("Space");
-        //     numberOfTypeEnemies++;
-        //     if(numberOfTypeEnemies > 3) numberOfTypeEnemies = 3;
-        //     UpdateWave(numberOfTypeEnemies, 20);
-        //     currTime = 0;
-        // }
+
+    }
+
+    private IEnumerator InitializeAllPool()
+    {
+        enemiesPoolDictionary = new Dictionary<string, List<GameObject>>();
+        gemsPoolDictionary = new Dictionary<string, List<GameObject>>();
+
+        yield return StartCoroutine(InitializeEnemiesPool(50));
+        yield return StartCoroutine(InitializeGemsPool(50));
     }
 
     private void SetupSpawnArea()
@@ -49,9 +57,8 @@ public class SpawnerController : MonoBehaviour
         maxRadius = minRadius + 2;
     }
 
-    private void InitializeEnemiesPool(int amount)
+    private IEnumerator InitializeEnemiesPool(int amount)
     {
-        enemiesPoolDictionary = new Dictionary<string, List<GameObject>>();
         for(int i = 0; i < enemiesObjects.Count; i++)
         {
             List<GameObject> objectPool = new List<GameObject>();
@@ -60,12 +67,17 @@ public class SpawnerController : MonoBehaviour
                 GameObject obj = Instantiate(enemiesObjects[i], transform); 
                 obj.SetActive(false);
                 objectPool.Add(obj);
+
+                if(j % objPerFrame == 0)
+                {
+                    yield return null;
+                }
             }
             enemiesPoolDictionary.Add(enemiesObjects[i].name, objectPool);
         }
     }
 
-    private void InitializeGemsPool(int amount)
+    private IEnumerator InitializeGemsPool(int amount)
     {
         gemsPoolDictionary = new Dictionary<string, List<GameObject>>();
         for(int i = 0; i < gemsObjects.Count; i++)
@@ -76,6 +88,11 @@ public class SpawnerController : MonoBehaviour
                 GameObject obj = GameObject.Instantiate(gemsObjects[i], transform);
                 obj.SetActive(false);
                 objectsPool.Add(obj);
+
+                if(j % objPerFrame == 0)
+                {
+                    yield return null;
+                }
             }
             gemsPoolDictionary.Add(gemsObjects[i].name,objectsPool);
         }
@@ -100,7 +117,6 @@ public class SpawnerController : MonoBehaviour
     {
         for(int i = 0; i < amountTypeEnemies; i++)
         {
-            
             for(int j = 0; j < amount; j++)
             {
                 GameObject obj = enemiesPoolDictionary[enemiesObjects[i].name][j];
@@ -111,9 +127,14 @@ public class SpawnerController : MonoBehaviour
 
     public void SpawnEnemy(GameObject obj)
     {
-        obj.SetActive(false);
-
+        if(obj.activeSelf)
+        {
+            SpawnGem(obj);
+            obj.SetActive(false);
+        }
+        
         Vector2 spawnPos = GetSpawnPosition();
+
         while(!IsValidPos(spawnPos))
         {
             spawnPos = GetSpawnPosition();
@@ -125,9 +146,24 @@ public class SpawnerController : MonoBehaviour
         obj.SetActive(true);
     }
 
+    private void SpawnGem(GameObject obj)
+    {
+        string nameObj = obj.GetComponent<EnemyHealth>().GetExpGemPrefab().name;
+        foreach(var objGem in gemsPoolDictionary[nameObj])
+        {
+            if(!objGem.activeSelf)
+            {
+                objGem.transform.position = obj.transform.position;
+                objGem.SetActive(true);
+                break;
+            }
+            
+        }
+    }
+
     private bool IsValidPos(Vector2 pos)
     {
-        return pos.x > 0 && pos.x < Constants.SIZE_MAP_X - 2 && pos.y > 0 && pos.y < Constants.SIZE_MAP_Y - 2;
+        return pos.x > 2 && pos.x < Constants.SIZE_MAP_X - 2 && pos.y > 2 && pos.y < Constants.SIZE_MAP_Y - 2;
     }
 
     void OnDrawGizmos()
