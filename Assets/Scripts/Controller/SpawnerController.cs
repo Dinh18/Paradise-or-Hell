@@ -113,7 +113,7 @@ public class SpawnerController : MonoBehaviour
         return spawnPos;
     }
 
-    private void UpdateWave(int amountTypeEnemies, int amount)
+    public void UpdateWave(int amountTypeEnemies, int amount)
     {
         for(int i = 0; i < amountTypeEnemies; i++)
         {

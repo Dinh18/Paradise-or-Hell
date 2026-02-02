@@ -34,8 +34,8 @@ public class SkillHitBox : MonoBehaviour
                 enemyHealth.TakeDamage(skill.GetDamage());
                 playerHealth.RecoverHealth((int)(skill.GetDamage() * playerStats.GetRecoverHealth()));
             }
-            if(skillType == SkillType.Ranged) Destroy(this.gameObject);
         }
+        if(skillType == SkillType.Ranged && collision.gameObject.CompareTag("Wall")) Destroy(this.gameObject);
     }
 
     public void ActiveHitBox()

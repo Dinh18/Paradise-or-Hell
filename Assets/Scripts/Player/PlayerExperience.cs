@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerExperience : MonoBehaviour
@@ -5,6 +6,7 @@ public class PlayerExperience : MonoBehaviour
     [SerializeField] private int expToUpLevel = 100;
     [SerializeField] private int currExp = 0;
     private PlayerStats playerStats;
+    public static Action<int,int> OnChangeExp;
     public void Setup(PlayerStats playerStats)
     {
         this.playerStats = playerStats;
@@ -18,6 +20,7 @@ public class PlayerExperience : MonoBehaviour
             expToUpLevel += 50;
             LevelUp();
         }
+        OnChangeExp?.Invoke(currExp, expToUpLevel);
     }
     public void LevelUp()
     {

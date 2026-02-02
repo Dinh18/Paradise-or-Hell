@@ -24,7 +24,7 @@ public class PlayerStats : MonoBehaviour
                 maxHealth += (int)(maxHealth * amount);
                 break;
             case StatType.Speed:
-                speed += speed + amount;
+                speed += amount;
                 break;
             case StatType.Armor:
                 armor += (int)amount;
